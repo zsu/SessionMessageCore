@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using SessionMessage.Core;
 
-namespace SessionMessage.Mvc
+namespace SessionMessage.UI
 {
     [HtmlTargetElement("sessionmessage")]
     public class SessionMessageTagHelper : TagHelper

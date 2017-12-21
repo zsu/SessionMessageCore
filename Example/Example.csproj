@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SessionMessage\SessionMessage.csproj" />
+    <ProjectReference Include="..\SessionMessage.Core\SessionMessage.Core.csproj" />
+    <ProjectReference Include="..\SessionMessage.UI\SessionMessage.UI.csproj" />
   </ItemGroup>
 
 </Project>

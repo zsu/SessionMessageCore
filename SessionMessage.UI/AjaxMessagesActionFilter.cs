@@ -6,10 +6,10 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Text;
 using System.Runtime.Serialization;
-using SessionMessage.Core;
 using Microsoft.AspNetCore.Mvc.Filters;
+using SessionMessage.Core;
 
-namespace SessionMessage.Mvc
+namespace SessionMessage.UI
 {
     /// <summary>
     /// If we're dealing with ajax requests, any message that is in the view data goes to

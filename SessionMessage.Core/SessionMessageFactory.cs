@@ -16,14 +16,14 @@ namespace SessionMessage.Core
         {
             var typeName = configuration["sessionMessage:sessionMessageFactoryTypeName"];
             if (string.IsNullOrWhiteSpace(typeName))
-                typeName = "SessionMessage.Core.CookieSessionMessageProvider,SessionMessage";
+                typeName = "SessionMessage.Core.CookieSessionMessageProvider,SessionMessage.Core";
             _type = Type.GetType(typeName, true, true);
             _serviceProvider = serviceProvider;
         }
         public SessionMessageFactory(string typeName)
         {
             if (string.IsNullOrEmpty(typeName))
-                typeName = "SessionMessage.Core.CookieSessionMessageProvider,SessionMessage";
+                typeName = "SessionMessage.Core.CookieSessionMessageProvider,SessionMessage.Core";
 
             _type = Type.GetType(typeName, true, true);
         }

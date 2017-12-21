@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace SessionMessage.Mvc
+namespace SessionMessage.UI
 {
     public static class SessionMessageApplicationBuilderExtension
     {
@@ -18,7 +18,7 @@ namespace SessionMessage.Mvc
             app.UseStaticFiles(new StaticFileOptions
             {
                 RequestPath = $"/{options.RoutePrefix}",
-                FileProvider = new EmbeddedFileProvider(typeof(SessionMessageApplicationBuilderExtension).GetTypeInfo().Assembly, "SessionMessage.Mvc")
+                FileProvider = new EmbeddedFileProvider(typeof(SessionMessageApplicationBuilderExtension).GetTypeInfo().Assembly, "SessionMessage.UI")
             });
 
             return app;

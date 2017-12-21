@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>SessionMessage.UI</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Zhicheng Su</Authors>
+    <Title>SessionMessage.UI</Title>
+    <Description>An asp.net Core UI library for Modal dialog/StatusBar notifications.</Description>
+    <PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/zsu/SessionMessage.UI</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2017 Zhicheng Su</Copyright>
+    <PackageTags>asp.net core, tage helper, message notfication, statusbar, modal dialog</PackageTags>
+    <Version>1.0.0</Version>
+    <RepositoryUrl>https://github.com/zsu/SessionMessage.UI</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Content\sessionmessage.css" />
+    <None Remove="Content\sessionmessage.min.css" />
+    <None Remove="Images\fail.gif" />
+    <None Remove="Images\info.gif" />
+    <None Remove="Images\ok.gif" />
+    <None Remove="Images\warn.gif" />
+    <None Remove="Scripts\sessionmessage.js" />
+    <None Remove="Scripts\sessionmessage.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Content\sessionmessage.css" />
+    <EmbeddedResource Include="Content\sessionmessage.min.css" />
+    <EmbeddedResource Include="Images\fail.gif" />
+    <EmbeddedResource Include="Images\info.gif" />
+    <EmbeddedResource Include="Images\ok.gif" />
+    <EmbeddedResource Include="Images\warn.gif" />
+    <EmbeddedResource Include="Scripts\sessionmessage.js" />
+    <EmbeddedResource Include="Scripts\sessionmessage.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SessionMessage.Core\SessionMessage.Core.csproj" />
+  </ItemGroup>
+
+</Project>
