@@ -15,7 +15,6 @@ Install-Package SessionMessageCore
 ```
 # Getting started with SessionMessage
 
-  * Reference SessionMessage.dll
   * Call the followings in Startup:  
   ```xml
   * services.AddMvc(options=> { options.Filters.Add(typeof(AjaxMessagesActionFilter)); });
