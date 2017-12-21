@@ -19,7 +19,6 @@ Install-Package SessionMessage.UI
   ```xml
   * services.AddMvc(options=> { options.Filters.Add(typeof(AjaxMessagesActionFilter)); });
   * services.AddSessionMessage();
-  * app.UseStaticFiles();
   ```
   * Inject ISessionMessageManager and call ISessionMessageManager.SetMessage(MessageType.Info, MessageBehaviors.StatusBar, "your notification message") when you want to display message;
   * Use it on your page;
