@@ -25,6 +25,7 @@ Install-Package SessionMessageCore
   * Use it on your page;
 ```xml
 Razor:
+  * Add @addTagHelper *, SessionMessage to _ViewImports.cshtml
   * Add reference to jquery/jqury UI/toastr;
   * Insert <sessionmessage /> after reference to jquery/jqury UI/toastr;
 ```
