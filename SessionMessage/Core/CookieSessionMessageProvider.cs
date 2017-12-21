@@ -8,7 +8,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Net;
 
-namespace SessionMessages.Core
+namespace SessionMessage.Core
 {
     public class CookieSessionMessageProvider:ISessionMessageProvider
     {

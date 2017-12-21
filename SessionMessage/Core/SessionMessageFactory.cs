@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 
-namespace SessionMessages.Core
+namespace SessionMessage.Core
 {
 
 
@@ -16,14 +16,14 @@ namespace SessionMessages.Core
         {
             var typeName = configuration["sessionMessage:sessionMessageFactoryTypeName"];
             if (string.IsNullOrWhiteSpace(typeName))
-                typeName = "SessionMessages.Core.CookieSessionMessageProvider,SessionMessage";
+                typeName = "SessionMessage.Core.CookieSessionMessageProvider,SessionMessage";
             _type = Type.GetType(typeName, true, true);
             _serviceProvider = serviceProvider;
         }
         public SessionMessageFactory(string typeName)
         {
             if (string.IsNullOrEmpty(typeName))
-                typeName = "SessionMessages.Core.CookieSessionMessageProvider,SessionMessage";
+                typeName = "SessionMessage.Core.CookieSessionMessageProvider,SessionMessage";
 
             _type = Type.GetType(typeName, true, true);
         }

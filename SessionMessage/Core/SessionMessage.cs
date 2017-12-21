@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
-namespace SessionMessages.Core
+namespace SessionMessage.Core
 {
     public class SessionMessageManager : ISessionMessageManager
     {

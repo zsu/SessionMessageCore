@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Example.Models;
-using SessionMessages.Core;
+using SessionMessage.Core;
 
 namespace Example.Controllers
 {
@@ -16,11 +16,27 @@ namespace Example.Controllers
         {
             _sessionMessageManager = sessionMessageManager;
         }
-        public IActionResult Index()
+        [HttpGet]
+        public ActionResult Index()
         {
-            _sessionMessageManager.SetMessage(MessageType.Info, MessageBehaviors.StatusBar, "test");
-            return View();
+            var vm = new SessionMessageViewModel { Type = MessageType.Success, Behaviors = MessageBehaviors.StatusBar };
+            return View(vm);
         }
+
+        [HttpPost]
+        public ActionResult Index(SessionMessageViewModel vm)
+        {
+            ViewBag.Message = "Message page.";
+            _sessionMessageManager.SetMessage(vm.Type, vm.Behaviors, vm.Message);
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult AjaxMessage([FromBody] SessionMessageViewModel vm)
+        {
+            _sessionMessageManager.SetMessage(vm.Type, vm.Behaviors, vm.Message);
+            return View("Index");
+        }
+
 
         public IActionResult About()
         {
@@ -40,5 +56,12 @@ namespace Example.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+    }
+    public class SessionMessageViewModel
+    {
+        public string Caption { get; set; }
+        public string Message { get; set; }
+        public MessageType Type { get; set; }
+        public MessageBehaviors Behaviors { get; set; }
     }
 }

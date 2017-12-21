@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace SessionMessages.Core
+namespace SessionMessage.Core
 {
     public class SessionStateSessionMessageProvider:ISessionMessageProvider
     {

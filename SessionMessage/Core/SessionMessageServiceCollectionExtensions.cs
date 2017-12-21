@@ -6,7 +6,7 @@ using System.Text;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-namespace SessionMessages.Core
+namespace SessionMessage.Core
 {
     public static class SessionMessageServiceCollectionExtensions
     {

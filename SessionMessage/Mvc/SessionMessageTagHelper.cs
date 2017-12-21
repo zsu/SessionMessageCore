@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using SessionMessages.Core;
+using SessionMessage.Core;
 
-namespace SessionMessages.Mvc
+namespace SessionMessage.Mvc
 {
     [HtmlTargetElement("sessionmessage")]
     public class SessionMessageTagHelper : TagHelper

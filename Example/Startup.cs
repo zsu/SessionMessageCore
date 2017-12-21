@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SessionMessage.Mvc;
-using SessionMessages.Core;
-using SessionMessages.Mvc;
+using SessionMessage.Core;
 
 namespace Example
 {

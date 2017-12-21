@@ -129,12 +129,12 @@ function handleAjaxMessages() {
     //        if (request.responseText)
     //            responseMessage = request.responseText;
     //        else
-    //            responseMessage = 'Status: '' + request.statusText + ''. Error code: ' + request.status;
+    //            responseMessage = 'Status: ' + request.statusText + '. Error code: ' + request.status;
     //    }
     //    if (exception)
-    //        log.error(exception);
+    //        console.log.error(exception);
     //    else
-    //        log.error(responseMessage);
+    //        console.log.error(responseMessage);
     //    //var message = '<div id='messagebox' behavior=' + '2' + ' class='messagebox ' + 'error' + ''>' + responseMessage + '</div>';
     //    //displayMessage(message, 'error', 2);
     //});
