@@ -20,7 +20,7 @@ Install-Package SessionMessage.UI
   * services.AddMvc(options=> { options.Filters.Add(typeof(AjaxMessagesActionFilter)); });
   * services.AddSessionMessage();
   ```
-  * Inject ISessionMessageManager and call ISessionMessageManager.SetMessage(MessageType.Info, MessageBehaviors.StatusBar, "your notification message") when you want to display message;
+  * Inject ISessionMessageManager and call ISessionMessageManager.SetMessage(MessageType.Info, MessageBehaviors.StatusBar, "your notification message") when you want to display message; Subscribe to Modal Dialog close event by providing javascript to "closeCallback" parameter;
   * Use it on your page;
 ```xml
 Razor:
