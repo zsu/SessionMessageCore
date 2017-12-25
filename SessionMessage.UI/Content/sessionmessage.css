@@ -19,17 +19,17 @@
 
     #messagewrapper .info {
         color: #06f;
-        background: #0df url(sessionmessage/Images/info.gif) no-repeat 8px 12px !important;
+        background: #0df url(../Images/info.gif) no-repeat 8px 12px !important;
     }
 
     #messagewrapper .warning {
         color: #c60;
-        background: #ffc url(sessionmessage/Images/warn.gif) no-repeat 8px 12px !important;
+        background: #ffc url(../Images/warn.gif) no-repeat 8px 12px !important;
     }
 
     #messagewrapper .error {
         color: #c00;
-        background: #fcc url(sessionmessage/Images/fail.gif) no-repeat 8px 12px !important;
+        background: #fcc url(../Images/fail.gif) no-repeat 8px 12px !important;
     }
 
 .messagebox.success {
@@ -39,7 +39,7 @@
 }
 
 .messagebox.info {
-    background: #0df url(sessionmessage/Images/info.gif) no-repeat 8px 12px !important;
+    background: #0df url(../Images/info.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
     font-size: 0.85em;
@@ -47,13 +47,13 @@
 }
 
 .messagebox.warning {
-    background: #ffc url(sessionmessage/Images/warn.gif) no-repeat 8px 12px !important;
+    background: #ffc url(../Images/warn.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
 }
 
 .messagebox.error {
-    background: #fcc url(sessionmessage/Images/fail.gif) no-repeat 8px 12px !important;
+    background: #fcc url(../Images/fail.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
 }
@@ -65,7 +65,7 @@
 }
 
 .ui-dialog-content .messagebox.info {
-    background: url(sessionmessage/Images/info.gif) no-repeat 8px 12px !important;
+    background: url(../Images/info.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
     font-size: 0.85em;
@@ -73,13 +73,13 @@
 }
 
 .ui-dialog-content .messagebox.warning {
-    background: url(sessionmessage/Images/warn.gif) no-repeat 8px 12px !important;
+    background: url(../Images/warn.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
 }
 
 .ui-dialog-content .messagebox.error {
-    background: url(sessionmessage/Images/fail.gif) no-repeat 8px 12px !important;
+    background: url(../Images/fail.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
 }
