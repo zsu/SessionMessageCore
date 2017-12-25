@@ -14,7 +14,7 @@
 
     #messagewrapper .success {
         color: #060;
-        background: #cfc url(sessionmessage/Images/ok.gif) no-repeat 8px 12px !important;
+        background: #cfc url(../Images/ok.gif) no-repeat 8px 12px !important;
     }
 
     #messagewrapper .info {
@@ -33,7 +33,7 @@
     }
 
 .messagebox.success {
-    background: #cfc url(sessionmessage/Images/ok.gif) no-repeat 8px 12px !important;
+    background: #cfc url(../Images/ok.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
 }
@@ -59,7 +59,7 @@
 }
 
 .ui-dialog-content .messagebox.success {
-    background: url(sessionmessage/Images/ok.gif) no-repeat 8px 12px !important;
+    background: url(../Images/ok.gif) no-repeat 8px 12px !important;
     text-align: left;
     padding: 12px 10px 10px 30px !important;
 }

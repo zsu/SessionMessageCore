@@ -8,7 +8,7 @@ function displayMessages() {
     var messageboxmodal = $('#messageboxmodal');
     if (messagewrapper.children().length > 0) {
         if (messageboxstatusbar && messageboxstatusbar.children().length > 0) {
-            if(typeof toastr != 'undefined')
+            if(typeof toastr !== 'undefined')
                 {
                   messageboxstatusbar.hide();
 		  /*toastr.options = {
@@ -77,7 +77,8 @@ function displayMessages() {
                     try {
                         $(this).dialog('destroy').remove();
                         clearMessages();
-                        return true;
+                        sessionMessageCloseCallback(event);
+                       return true;
                     }
                     catch (e) {
                         return true;

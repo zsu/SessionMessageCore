@@ -154,7 +154,6 @@ namespace SessionMessage.UI
                     messages += string.IsNullOrEmpty(writer.ToString()) ? null : writer.ToString();
                 }
 				messageWrapper.InnerHtml.AppendHtml(messages);
-                _sessionMessageManager.Clear();
             }
             writer = new StringWriter();
             messageWrapper.WriteTo(writer, HtmlEncoder.Default);
@@ -165,7 +164,9 @@ namespace SessionMessage.UI
 		{
 			StringBuilder scripts = new StringBuilder();
 			StringBuilder options = new StringBuilder();
-			options.AppendLine(@"toastr.options = {");
+            StringBuilder callbackScripts = new StringBuilder();
+            StringBuilder callbackWrapper = new StringBuilder();
+            options.AppendLine(@"toastr.options = {");
 			options.AppendFormat(@"closeButton: {0},
                 newestOnTop: {1},
                 progressBar: {2},
@@ -183,6 +184,29 @@ namespace SessionMessage.UI
             var scriptPath = _urlHelper.GetUrlHelper(_actionContextAccessor.ActionContext).Content("~");
             //scripts.AppendFormat("<script type='text/javascript' src='{0}/session-message/dist/js/sessionmessage{1}.js'></script>", scriptPath, _hostingEnvironment.IsDevelopment()?"":".min");
             scripts.AppendFormat("<script type='text/javascript' src='{0}/sessionmessage/Scripts/sessionmessage{1}.js'></script>", scriptPath, _hostingEnvironment.IsDevelopment() ? "" : ".min");
+            scripts.AppendLine("<script type='text/javascript'>");
+            callbackWrapper.AppendLine("function sessionMessageCloseCallback(event){");
+            List<Core.SessionMessage> sessionMessages = _sessionMessageManager.GetMessage();
+            if (sessionMessages != null && sessionMessages.Count > 0)
+            {
+                for (int i = 0; i < sessionMessages.Count; i++)
+                {
+                    var sessionMessage = sessionMessages[i];
+                    switch (sessionMessage.Behavior)
+                    {
+                        case MessageBehaviors.Modal:
+                            if (!string.IsNullOrWhiteSpace(sessionMessage.CloseCallBack))
+                            {
+                                callbackScripts.AppendFormat("function smcc{0}(event){{{1}}}",i,sessionMessage.CloseCallBack);
+                                callbackWrapper.AppendLine(string.Format("smcc{0}(event);", i));
+                            }
+                            break;
+                    }
+                }
+            }
+            scripts.AppendLine(callbackScripts.ToString());
+            callbackWrapper.AppendLine("}</script>");
+            scripts.AppendLine(callbackWrapper.ToString());
             return scripts.ToString();
 		}
 		private string RenderCss()
@@ -200,7 +224,8 @@ namespace SessionMessage.UI
 			content.AppendLine(RenderCss());
 			content.AppendLine(RenderHtml());
 			content.AppendLine(RenderScript());
-			return content.ToString();
+            _sessionMessageManager.Clear();
+            return content.ToString();
 		}
 		public string ToHtmlString()
 		{

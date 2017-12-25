@@ -33,11 +33,19 @@ namespace SessionMessage.Core
         {
             SetMessage(messageType, behavior, message, key, null, null, null);
         }
+        public void SetMessage(MessageType messageType, MessageBehaviors behavior, string message, string key,string closeCallback)
+        {
+            SetMessage(messageType, behavior, message, key, null, null, null,closeCallback);
+        }
         public void SetMessage(MessageType messageType, MessageBehaviors behavior, string message, MessageButton? messageButtons)
         {
             SetMessage(messageType, behavior, message, null, null, messageButtons, null);
         }
         public void SetMessage(MessageType messageType, MessageBehaviors behavior, string message, string key, string caption, MessageButton? messageButtons, MessageIcon? messageIcon)
+        {
+            SetMessage(messageType, behavior, message, key, caption, messageButtons, messageIcon,null);
+        }
+        public void SetMessage(MessageType messageType, MessageBehaviors behavior, string message, string key, string caption, MessageButton? messageButtons, MessageIcon? messageIcon,string closeCallback)
         {
             //if (caption == null || caption.Trim() == string.Empty)
             //    caption = messageType.ToString();
@@ -58,7 +66,7 @@ namespace SessionMessage.Core
                         break;
                 }
             }
-            SessionMessage sessionMessage = new SessionMessage(messageType, behavior, message, key, caption, messageButtons, messageIcon);
+            SessionMessage sessionMessage = new SessionMessage(messageType, behavior, message, key, caption, messageButtons, messageIcon,closeCallback);
             _provider.SetMessage(sessionMessage);
         }
         public void Clear()
@@ -104,14 +112,18 @@ namespace SessionMessage.Core
         }
         [DataMember]
         public string Key { get; set; }
+        [DataMember]
+        public string CloseCallBack { get; set; }
         public SessionMessage(MessageType messageType, MessageBehaviors behavior, string message)
-            : this(messageType, behavior, message, null, null, null, null)
+            : this(messageType, behavior, message, null, null, null, null,null)
         {
         }
-        public SessionMessage(MessageType messageType, MessageBehaviors behavior, string message, string key, string caption, MessageButton? messageButtons, MessageIcon? messageIcon)
+        public SessionMessage(MessageType messageType, MessageBehaviors behavior, string message, string key, string caption, MessageButton? messageButtons, MessageIcon? messageIcon,string closeCallback)
         {
             if (behavior == MessageBehaviors.Modal && (!messageButtons.HasValue || !messageIcon.HasValue))
             {
+                if (behavior != MessageBehaviors.Modal && !string.IsNullOrWhiteSpace(closeCallback))
+                    throw new ArgumentException("{0} only available for Modal Dialog.", nameof(closeCallback));
                 messageButtons = messageButtons ?? MessageButton.Ok;
                 if (!messageIcon.HasValue)
                 {
@@ -142,6 +154,7 @@ namespace SessionMessage.Core
             Behavior = behavior;
             Buttons = messageButtons;
             Icon = messageIcon;
+            CloseCallBack = closeCallback;
         }
     }
 
