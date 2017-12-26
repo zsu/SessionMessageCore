@@ -1,14 +1,14 @@
 [
   {
-    "outputFileName": "Mvc/Content/sessionmessage.min.css",
+    "outputFileName": "Content/sessionmessage.min.css",
     "inputFiles": [
-      "Mvc/Content/sessionmessage.css"
+      "Content/sessionmessage.css"
     ]
   },
   {
-    "outputFileName": "Mvc/Scripts/sessionmessage.min.js",
+    "outputFileName": "Scripts/sessionmessage.min.js",
     "inputFiles": [
-      "Mvc/Scripts/sessionmessage.js"
+      "Scripts/sessionmessage.js"
     ]
   }
 ]
