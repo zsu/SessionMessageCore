@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PackageId>SessionMessage.UI</PackageId>
-    <PackageVersion>1.0.4</PackageVersion>
+    <PackageVersion>1.0.5</PackageVersion>
     <Authors>Zhicheng Su</Authors>
     <Title>SessionMessage.UI</Title>
     <Description>An asp.net Core UI library for Modal dialog/StatusBar notifications.</Description>
@@ -12,7 +12,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2017 Zhicheng Su</Copyright>
     <PackageTags>asp.net core, tage helper, message notfication, statusbar, modal dialog</PackageTags>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <RepositoryUrl>https://github.com/zsu/SessionMessageCore</RepositoryUrl>
   </PropertyGroup>
 
