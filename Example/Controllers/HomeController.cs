@@ -28,6 +28,7 @@ namespace Example.Controllers
         {
             ViewBag.Message = "Message page.";
             _sessionMessageManager.SetMessage(vm.Type, vm.Behaviors, vm.Message);
+            //return RedirectToAction("About");
             return View(vm);
         }
         [HttpPost]
@@ -41,7 +42,6 @@ namespace Example.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 

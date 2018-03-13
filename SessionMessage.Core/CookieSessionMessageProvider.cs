@@ -39,7 +39,9 @@ namespace SessionMessage.Core
         public List<SessionMessage> GetMessage()
         {
             List<SessionMessage> message = null;
-            var cookie = GetCookieValueFromResponse(_httpContextAccessor.HttpContext.Response,SessionMessageManager.SessionMessageKey);
+            var cookie = _httpContextAccessor.HttpContext.Request.Cookies[SessionMessageManager.SessionMessageKey];
+            if(string.IsNullOrWhiteSpace(cookie))
+                cookie=GetCookieValueFromResponse(_httpContextAccessor.HttpContext.Response,SessionMessageManager.SessionMessageKey);
             if (!string.IsNullOrWhiteSpace(cookie))
             {
                 using (MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(cookie)))
