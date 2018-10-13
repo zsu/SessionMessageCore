@@ -207,4 +207,14 @@ function displayModalMessage(message) {
         });
         displayMessages();
     }
+}function initSessionMessage(closeButton, newestOnTop, progressBar, positionClass, timeOut, extendedTimeOut,showMethod,hideMethod,closeMethod) {    toastr.options = {
+        closeButton: closeButton,
+        newestOnTop: newestOnTop,
+        progressBar: progressBar,
+        positionClass: positionClass,
+        timeOut: timeOut,
+        extendedTimeOut: extendedTimeOut,
+        showMethod: showMethod,
+        hideMethod: hideMethod,
+        closeMethod: closeMethod};
 }

@@ -162,29 +162,20 @@ namespace SessionMessage.UI
         }
 		private string RenderScript()
 		{
+            bool hasCallback=false;
 			StringBuilder scripts = new StringBuilder();
 			StringBuilder options = new StringBuilder();
             StringBuilder callbackScripts = new StringBuilder();
             StringBuilder callbackWrapper = new StringBuilder();
-            options.AppendLine(@"toastr.options = {");
-			options.AppendFormat(@"closeButton: {0},
-                newestOnTop: {1},
-                progressBar: {2},
-                positionClass: '{3}',
-                timeOut: '{4}',
-                extendedTimeOut: '{5}',
-				showMethod: '{6}',
-				hideMethod: '{7}',
-				closeMethod: '{8}'", CloseButton.ToString().ToLower(), NewestOnTop.ToString().ToLower(), Progressbar.ToString().ToLower(),
-								   ConvertPosition(DisplayPosition), Timeout, ExtendedTimeout, ConvertAnimitioEffect(ShowAnimitionEffect),
-			   ConvertAnimitioEffect(HideAnimitionEffect), ConvertAnimitioEffect(CloseAnimitionEffect));
-            options.AppendLine(@"};");
+            options.AppendFormat("$().ready(function () {{initSessionMessage('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');}});"
+            , CloseButton.ToString().ToLower(), NewestOnTop.ToString().ToLower(), Progressbar.ToString().ToLower(),
+			ConvertPosition(DisplayPosition), Timeout, ExtendedTimeout, ConvertAnimitioEffect(ShowAnimitionEffect),
+			ConvertAnimitioEffect(HideAnimitionEffect), ConvertAnimitioEffect(CloseAnimitionEffect));
             scripts.AppendFormat("<script type='text/javascript'>{0}</script>",options.ToString());
             //var scriptPath=_urlHelper.GetUrlHelper(_actionContextAccessor.ActionContext).Content("~/lib");
             var scriptPath = _urlHelper.GetUrlHelper(_actionContextAccessor.ActionContext).Content("~");
             //scripts.AppendFormat("<script type='text/javascript' src='{0}/session-message/dist/js/sessionmessage{1}.js'></script>", scriptPath, _hostingEnvironment.IsDevelopment()?"":".min");
             scripts.AppendFormat("<script type='text/javascript' src='{0}/sessionmessage/Scripts/sessionmessage{1}.js'></script>", scriptPath, _hostingEnvironment.IsDevelopment() ? "" : ".min");
-            scripts.AppendLine("<script type='text/javascript'>");
             callbackWrapper.AppendLine("function sessionMessageCloseCallback(event){");
             List<Core.SessionMessage> sessionMessages = _sessionMessageManager.GetMessage();
             if (sessionMessages != null && sessionMessages.Count > 0)
@@ -197,6 +188,7 @@ namespace SessionMessage.UI
                         case MessageBehaviors.Modal:
                             if (!string.IsNullOrWhiteSpace(sessionMessage.CloseCallBack))
                             {
+                                hasCallback = true;
                                 callbackScripts.AppendFormat("function smcc{0}(event){{{1}}}",i,sessionMessage.CloseCallBack);
                                 callbackWrapper.AppendLine(string.Format("smcc{0}(event);", i));
                             }
@@ -204,9 +196,14 @@ namespace SessionMessage.UI
                     }
                 }
             }
-            scripts.AppendLine(callbackScripts.ToString());
-            callbackWrapper.AppendLine("}</script>");
-            scripts.AppendLine(callbackWrapper.ToString());
+            if (hasCallback)
+            {
+                scripts.AppendLine("<script type='text/javascript'>");
+                scripts.AppendLine(callbackScripts.ToString());
+                scripts.AppendLine(callbackWrapper.ToString());
+                callbackWrapper.Append("}");
+                scripts.AppendLine("</script>");
+            }
             return scripts.ToString();
 		}
 		private string RenderCss()
