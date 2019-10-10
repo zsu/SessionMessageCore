@@ -200,8 +200,8 @@ namespace SessionMessage.UI
             {
                 scripts.AppendLine("<script type='text/javascript'>");
                 scripts.AppendLine(callbackScripts.ToString());
-                scripts.AppendLine(callbackWrapper.ToString());
                 callbackWrapper.Append("}");
+                scripts.AppendLine(callbackWrapper.ToString());
                 scripts.AppendLine("</script>");
             }
             return scripts.ToString();
