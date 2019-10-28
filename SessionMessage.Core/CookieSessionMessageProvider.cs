@@ -34,6 +34,7 @@ namespace SessionMessage.Core
                 json = Encoding.Default.GetString(ms.ToArray());
                 ms.Close();
             }
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete(SessionMessageManager.SessionMessageKey);
             _httpContextAccessor.HttpContext.Response.Cookies.Append(SessionMessageManager.SessionMessageKey, json);
         }
         public List<SessionMessage> GetMessage()
@@ -62,14 +63,22 @@ namespace SessionMessage.Core
         }
         private string GetCookieValueFromResponse(HttpResponse response, string cookieName)
         {
-            foreach (var headers in response.Headers.Values)
-                foreach (var header in headers)
-                    if (header.StartsWith(cookieName))
+            string match = $"{cookieName}=";
+            var p1 = match.Length;
+
+            foreach (var headers in response.Headers)
+            {
+                if (headers.Key != "Set-Cookie")
+                    continue;
+                foreach (string header in headers.Value)
+                {
+                    if (header.StartsWith(match) && header.Length > p1 && header[p1] != ';')
                     {
-                        var p1 = header.IndexOf('=');
-                        var p2 = header.IndexOf(';');
-                        return WebUtility.UrlDecode(header.Substring(p1 + 1, p2 - p1 - 1));
+                        var p2 = header.IndexOf(';', p1);
+                        return WebUtility.UrlDecode(header.Substring(p1, p2 - p1));
                     }
+                }
+            }
             return null;
         }
         #endregion
