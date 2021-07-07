@@ -35,7 +35,7 @@ namespace SessionMessage.Core
                 ms.Close();
             }
             _httpContextAccessor.HttpContext.Response.Cookies.Delete(SessionMessageManager.SessionMessageKey);
-            _httpContextAccessor.HttpContext.Response.Cookies.Append(SessionMessageManager.SessionMessageKey, json, new CookieOptions { Secure = true });
+            _httpContextAccessor.HttpContext.Response.Cookies.Append(SessionMessageManager.SessionMessageKey, json, new CookieOptions { SameSite=SameSiteMode.Lax });
         }
         public List<SessionMessage> GetMessage()
         {
