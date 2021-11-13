@@ -87,8 +87,9 @@ function displayMessages() {
                 open: function () {
                     $(this).closest(".ui-dialog")
                         .find(".ui-dialog-titlebar-close")
-                        .addClass("ui-icon ui-icon-closethick");
-                        //.html("<span class='ui-button-icon-primary ui-icon ui-icon-closethick'></span>");
+                        //.addClass("ui-icon ui-icon-closethick");
+                        .addClass("ui-button ui-corner-all ui-widget ui-button-icon-only") 
+                        .html("<span class='ui-button-icon ui-icon ui-icon-closethick'></span><span class='ui-button-icon-space'> </span>");
                 }
             });
             messageboxmodal.dialog('open');
