@@ -83,6 +83,12 @@ function displayMessages() {
                     catch (e) {
                         return true;
                     }
+                },
+                open: function () {
+                    $(this).closest(".ui-dialog")
+                        .find(".ui-dialog-titlebar-close")
+                        .addClass("ui-icon ui-icon-closethick");
+                        //.html("<span class='ui-button-icon-primary ui-icon ui-icon-closethick'></span>");
                 }
             });
             messageboxmodal.dialog('open');
