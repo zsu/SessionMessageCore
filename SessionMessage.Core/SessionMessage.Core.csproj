@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>SessionMessage.Core</PackageId>
     <Title>SessionMessage.Core</Title>
     <Authors>Zhicheng Su</Authors>
@@ -11,17 +11,16 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2017 Zhicheng Su</Copyright>
     <PackageTags>asp.net core, tage helper, message notfication, statusbar, modal dialog</PackageTags>
-    <Version>3.0.0</Version>
+    <Version>4.0.0</Version>
     <RepositoryUrl>https://github.com/zsu/SessionMessageCore</RepositoryUrl>
   </PropertyGroup>
-	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.8" />
   </ItemGroup>
 
 </Project>
